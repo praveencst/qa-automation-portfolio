@@ -6,33 +6,25 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    # Run every night at 2:00 AM UTC
     - cron: '0 2 * * *'
   workflow_dispatch:
-    # Allows manual trigger from GitHub UI
 
 jobs:
   api-tests:
     name: API Regression Tests
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'   # <-- CHANGED from '20'
           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
+      - run: npm ci
+      - run: npm run test:api
 
-      - name: Run API tests
-        run: npm run test:api
-
-      - name: Upload API test results
-        if: always()
+      - if: always()
         uses: actions/upload-artifact@v4
         with:
           name: api-test-results
@@ -43,33 +35,24 @@ jobs:
     runs-on: ubuntu-latest
     needs: api-tests
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'   # <-- CHANGED from '20'
           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:ui
 
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
-
-      - name: Run UI tests
-        run: npm run test:ui
-
-      - name: Upload UI screenshots
-        if: failure()
+      - if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: ui-failure-screenshots
           path: reports/screenshot-*.png
 
-      - name: Upload UI test results
-        if: always()
+      - if: always()
         uses: actions/upload-artifact@v4
         with:
           name: ui-test-results
@@ -81,39 +64,39 @@ jobs:
     needs: [api-tests, ui-tests]
     if: always()
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'   # <-- CHANGED from '20'
           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
+      - run: npm ci
 
-      - name: Download API results
-        uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v4
         with:
           name: api-test-results
           path: reports/api/
 
-      - name: Download UI results
-        uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v4
         with:
           name: ui-test-results
           path: reports/ui/
 
-      - name: Merge JSON reports
+      - name: Merge reports
         run: |
           mkdir -p reports
-          # Combine all cucumber JSON reports into one folder
           cp reports/api/*.json reports/ 2>/dev/null || true
           cp reports/ui/*.json reports/ 2>/dev/null || true
+          ls -la reports/
 
       - name: Generate HTML report
         run: npm run report
+
+      - name: Verify report exists
+        run: |
+          ls -la reports/html/
+          test -f reports/html/index.html && echo "✅ index.html exists" || echo "❌ index.html missing"
 
       - name: Upload HTML report
         if: always()
@@ -128,3 +111,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./reports/html
+          force_orphan: true
