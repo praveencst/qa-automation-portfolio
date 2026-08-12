@@ -1,0 +1,22 @@
+{
+  "name": "qa-automation-portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js --config cucumber.json",
+    "test:ui": "cucumber-js --config cucumber.json --tags @ui",
+    "test:api": "cucumber-js --config cucumber.json --tags @api",
+    "report": "node generate-report.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@cucumber/cucumber": "^13.2.1",
+    "@playwright/test": "^1.62.1",
+    "multiple-cucumber-html-reporter": "^4.2.0",
+    "playwright": "^1.62.1"
+  }
+}

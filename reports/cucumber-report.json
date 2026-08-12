@@ -1,0 +1,662 @@
+[
+  {
+    "description": "  As a customer\n  I want to purchase products\n  So that I can complete my order",
+    "elements": [
+      {
+        "description": "",
+        "id": "product-checkout-flow;complete-purchase-flow",
+        "keyword": "Scenario",
+        "line": 11,
+        "name": "Complete purchase flow",
+        "steps": [
+          {
+            "result": {
+              "status": "passed",
+              "duration": 114786500
+            },
+            "keyword": "Before",
+            "hidden": true
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 3551954099
+            },
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "I am logged in as \"standard_user\"",
+            "match": {
+              "location": "step-definitions\\ui\\checkoutSteps.js:8"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 28279000
+            },
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I add product \"Sauce Labs Backpack\" to cart",
+            "match": {
+              "location": "step-definitions\\ui\\checkoutSteps.js:14"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 45294400
+            },
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "I go to the cart",
+            "match": {
+              "location": "step-definitions\\ui\\checkoutSteps.js:19"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 61434000
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I proceed to checkout",
+            "match": {
+              "location": "step-definitions\\ui\\checkoutSteps.js:24"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 42492699
+            },
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "firstName",
+                      "lastName",
+                      "postalCode"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "John",
+                      "Doe",
+                      "12345"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "And ",
+            "line": 15,
+            "name": "I fill in shipping information:",
+            "match": {
+              "location": "step-definitions\\ui\\checkoutSteps.js:29"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 83359900
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 18,
+            "name": "I continue to overview",
+            "match": {
+              "location": "step-definitions\\ui\\checkoutSteps.js:38"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 39516400
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "I finish the checkout",
+            "match": {
+              "location": "step-definitions\\ui\\checkoutSteps.js:42"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 7256599
+            },
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "I should see the order confirmation message \"Thank you for your order!\"",
+            "match": {
+              "location": "step-definitions\\ui\\checkoutSteps.js:46"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 6268999
+            },
+            "keyword": "After",
+            "hidden": true
+          }
+        ],
+        "tags": [
+          {
+            "name": "@ui",
+            "line": 1
+          },
+          {
+            "name": "@regression",
+            "line": 1
+          },
+          {
+            "name": "@e2e",
+            "line": 10
+          },
+          {
+            "name": "@critical",
+            "line": 10
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "product-checkout-flow",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Product Checkout Flow",
+    "tags": [
+      {
+        "name": "@ui",
+        "line": 1
+      },
+      {
+        "name": "@regression",
+        "line": 1
+      }
+    ],
+    "uri": "features\\ui\\checkout.feature"
+  },
+  {
+    "description": "  As a customer\n  I want to log in to the application\n  So that I can access the product catalog",
+    "elements": [
+      {
+        "description": "",
+        "id": "sauce-demo-login;successful-login-with-valid-credentials",
+        "keyword": "Scenario",
+        "line": 11,
+        "name": "Successful login with valid credentials",
+        "steps": [
+          {
+            "result": {
+              "status": "passed",
+              "duration": 58114099
+            },
+            "keyword": "Before",
+            "hidden": true
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 369020599
+            },
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "I am on the login page",
+            "match": {
+              "location": "step-definitions\\ui\\loginSteps.js:5"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 45195899
+            },
+            "arguments": [],
+            "keyword": "When ",
+            "line": 12,
+            "name": "I enter username \"standard_user\"",
+            "match": {
+              "location": "step-definitions\\ui\\loginSteps.js:10"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 7713900
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I enter password \"secret_sauce\"",
+            "match": {
+              "location": "step-definitions\\ui\\loginSteps.js:14"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 73431599
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I click the login button",
+            "match": {
+              "location": "step-definitions\\ui\\loginSteps.js:18"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 7259000
+            },
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "I should see the products page",
+            "match": {
+              "location": "step-definitions\\ui\\loginSteps.js:22"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 3177300
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 16,
+            "name": "the page title should be \"Swag Labs\"",
+            "match": {
+              "location": "step-definitions\\ui\\loginSteps.js:26"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 3048999
+            },
+            "keyword": "After",
+            "hidden": true
+          }
+        ],
+        "tags": [
+          {
+            "name": "@ui",
+            "line": 1
+          },
+          {
+            "name": "@regression",
+            "line": 1
+          },
+          {
+            "name": "@smoke",
+            "line": 1
+          },
+          {
+            "name": "@positive",
+            "line": 10
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "sauce-demo-login;failed-login-with-invalid-credentials",
+        "keyword": "Scenario Outline",
+        "line": 27,
+        "name": "Failed login with invalid credentials",
+        "steps": [
+          {
+            "result": {
+              "status": "passed",
+              "duration": 57749800
+            },
+            "keyword": "Before",
+            "hidden": true
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 373470799
+            },
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "I am on the login page",
+            "match": {
+              "location": "step-definitions\\ui\\loginSteps.js:5"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 45009799
+            },
+            "arguments": [],
+            "keyword": "When ",
+            "line": 20,
+            "name": "I enter username \"invalid_user\"",
+            "match": {
+              "location": "step-definitions\\ui\\loginSteps.js:10"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 6422300
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 21,
+            "name": "I enter password \"secret_sauce\"",
+            "match": {
+              "location": "step-definitions\\ui\\loginSteps.js:14"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 48962000
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 22,
+            "name": "I click the login button",
+            "match": {
+              "location": "step-definitions\\ui\\loginSteps.js:18"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 3722700
+            },
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 23,
+            "name": "I should see an error message \"Epic sadface: Username and password do not match any user in this service\"",
+            "match": {
+              "location": "step-definitions\\ui\\loginSteps.js:30"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 3549899
+            },
+            "keyword": "After",
+            "hidden": true
+          }
+        ],
+        "tags": [
+          {
+            "name": "@ui",
+            "line": 1
+          },
+          {
+            "name": "@regression",
+            "line": 1
+          },
+          {
+            "name": "@smoke",
+            "line": 1
+          },
+          {
+            "name": "@negative",
+            "line": 18
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "sauce-demo-login;failed-login-with-invalid-credentials",
+        "keyword": "Scenario Outline",
+        "line": 28,
+        "name": "Failed login with invalid credentials",
+        "steps": [
+          {
+            "result": {
+              "status": "passed",
+              "duration": 63732600
+            },
+            "keyword": "Before",
+            "hidden": true
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 386322599
+            },
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "I am on the login page",
+            "match": {
+              "location": "step-definitions\\ui\\loginSteps.js:5"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 42697200
+            },
+            "arguments": [],
+            "keyword": "When ",
+            "line": 20,
+            "name": "I enter username \"standard_user\"",
+            "match": {
+              "location": "step-definitions\\ui\\loginSteps.js:10"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 6741599
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 21,
+            "name": "I enter password \"wrong_pass\"",
+            "match": {
+              "location": "step-definitions\\ui\\loginSteps.js:14"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 43122999
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 22,
+            "name": "I click the login button",
+            "match": {
+              "location": "step-definitions\\ui\\loginSteps.js:18"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 3867599
+            },
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 23,
+            "name": "I should see an error message \"Epic sadface: Username and password do not match any user in this service\"",
+            "match": {
+              "location": "step-definitions\\ui\\loginSteps.js:30"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 3082999
+            },
+            "keyword": "After",
+            "hidden": true
+          }
+        ],
+        "tags": [
+          {
+            "name": "@ui",
+            "line": 1
+          },
+          {
+            "name": "@regression",
+            "line": 1
+          },
+          {
+            "name": "@smoke",
+            "line": 1
+          },
+          {
+            "name": "@negative",
+            "line": 18
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "sauce-demo-login;failed-login-with-invalid-credentials",
+        "keyword": "Scenario Outline",
+        "line": 29,
+        "name": "Failed login with invalid credentials",
+        "steps": [
+          {
+            "result": {
+              "status": "passed",
+              "duration": 60352899
+            },
+            "keyword": "Before",
+            "hidden": true
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 364187599
+            },
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "I am on the login page",
+            "match": {
+              "location": "step-definitions\\ui\\loginSteps.js:5"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 43700100
+            },
+            "arguments": [],
+            "keyword": "When ",
+            "line": 20,
+            "name": "I enter username \"\"",
+            "match": {
+              "location": "step-definitions\\ui\\loginSteps.js:10"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 8933100
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 21,
+            "name": "I enter password \"secret_sauce\"",
+            "match": {
+              "location": "step-definitions\\ui\\loginSteps.js:14"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 41989199
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 22,
+            "name": "I click the login button",
+            "match": {
+              "location": "step-definitions\\ui\\loginSteps.js:18"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 2590999
+            },
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 23,
+            "name": "I should see an error message \"Epic sadface: Username is required\"",
+            "match": {
+              "location": "step-definitions\\ui\\loginSteps.js:30"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 2984500
+            },
+            "keyword": "After",
+            "hidden": true
+          }
+        ],
+        "tags": [
+          {
+            "name": "@ui",
+            "line": 1
+          },
+          {
+            "name": "@regression",
+            "line": 1
+          },
+          {
+            "name": "@smoke",
+            "line": 1
+          },
+          {
+            "name": "@negative",
+            "line": 18
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "sauce-demo-login",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Sauce Demo Login",
+    "tags": [
+      {
+        "name": "@ui",
+        "line": 1
+      },
+      {
+        "name": "@regression",
+        "line": 1
+      },
+      {
+        "name": "@smoke",
+        "line": 1
+      }
+    ],
+    "uri": "features\\ui\\login.feature"
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "default": {
+    "paths": ["features/**/*.feature"],
+    "require": [
+      "src/utils/hooks.js",
+      "step-definitions/api/apiSteps.js",
+      "step-definitions/ui/loginSteps.js",
+      "step-definitions/ui/checkoutSteps.js"
+    ],
+    "format": [
+      "progress",
+      "json:reports/cucumber-report.json"
+    ],
+    "publishQuiet": true
+  }
+}
