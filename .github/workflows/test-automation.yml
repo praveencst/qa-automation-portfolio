@@ -18,10 +18,13 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'   # <-- CHANGED from '20'
+          node-version: '22'
           cache: 'npm'
 
       - run: npm ci
+      
+      - run: npx playwright install --with-deps chromium  # <-- ADD THIS
+
       - run: npm run test:api
 
       - if: always()
