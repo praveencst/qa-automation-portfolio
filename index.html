@@ -1,0 +1,945 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multiple Cucumber HTML Reporter</title>
+<link
+  rel="icon"
+  type="image/x-icon"
+  href="./assets/images/logo.png"
+>
+<link rel="stylesheet" href="./styles.min.css">
+
+  <script src="./assets/js/apex-charts.js"></script>
+  <link rel="stylesheet" href="./assets/css/font-awesome.css">
+
+<style>
+  [v-cloak] {
+    display: none;
+  }
+</style>
+
+    <script>
+      (function () {
+        const theme =
+          localStorage.getItem('theme') ||
+          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        if (theme === 'dark') document.documentElement.classList.add('dark');
+      })();
+    </script>
+  </head>
+  <body class="min-h-screen bg-background text-foreground">
+    <div class="w-full">
+      <!-- Header -->
+      <header class="border-b bg-background px-4 md:px-6 py-4 sticky top-0 z-40 backdrop-blur supports-backdrop-filter:bg-background/60">
+  <div class="mx-auto max-w-7xl flex items-center justify-between gap-4">
+    <div class="flex items-center gap-3 truncate">
+      <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-lg shadow-primary/20 overflow-hidden">
+        
+          <i class="fa-solid fa-vial-circle-check text-xl"></i>
+        
+      </div>
+      <div class="text-balance">
+        <h1 class="text-lg md:text-2xl font-bold text-foreground text-balance tracking-tight">
+          Multiple Cucumber HTML Reporter
+        </h1>
+        <p class="mt-0.5 text-[10px] md:text-xs text-muted-foreground uppercase font-bold tracking-widest opacity-70">
+          Multiple Cucumber HTML Reporter
+        </p>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <button id="theme-toggle" class="p-2 rounded-md hover:bg-accent transition-colors shrink-0">
+        <svg id="sun-icon" class="hidden h-4 w-4 md:h-5 md:w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z"/>
+        </svg>
+        <svg id="moon-icon" class="h-4 w-4 md:h-5 md:w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+
+      <!-- Main Content -->
+      <main class="space-y-6 px-6 py-8">
+        <div class="mx-auto max-w-7xl">
+          
+<div class="space-y-6">
+  <!-- Run Information Row -->
+  <div class="rounded-xl border bg-card text-card-foreground shadow p-4 md:p-6">
+  <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+    <div class="flex flex-wrap items-center gap-6 md:gap-8 flex-1">
+      
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+      <div class="flex items-center gap-3 min-w-[200px]">
+        <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+          <i class="fa-solid fa-clock text-sm"></i>
+        </div>
+        <div class="truncate text-xs">
+          <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">Execution Period</p>
+          <div class="font-medium text-foreground flex items-center gap-2">
+            <span>2026/08/22 02:45:59</span>
+            <span class="opacity-40 italic font-normal ml-2">Duration:</span>
+            <span>00:00:03.713</span>
+          </div>
+        </div>
+      </div>
+
+      
+
+      
+        <div class="flex items-center gap-3 min-w-[120px]">
+          <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+            <i class="fa-solid fa-user text-sm"></i>
+          </div>
+          <div class="truncate">
+            <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">Username</p>
+            <p class="text-sm font-bold text-foreground truncate">runner</p>
+          </div>
+        </div>
+      
+
+      
+        <div class="flex items-center gap-3 min-w-[120px]">
+          <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+            <i class="fa-brands fa-node-js text-sm"></i>
+          </div>
+          <div class="truncate">
+            <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">Node Version</p>
+            <p class="text-sm font-bold text-foreground truncate">v22.23.2</p>
+          </div>
+        </div>
+      
+
+      
+        <div class="flex items-center gap-3 min-w-[120px]">
+          <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+            <i class="fa-solid fa-code-branch text-sm"></i>
+          </div>
+          <div class="truncate">
+            <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">Report Version</p>
+            <p class="text-sm font-bold text-foreground truncate">4.2.0</p>
+          </div>
+        </div>
+      
+
+      
+
+      
+        <div class="flex items-center gap-3 min-w-[120px]">
+          <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+            <i class="fa-solid fa-microchip text-sm"></i>
+          </div>
+          <div class="truncate">
+            <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">Machine Arch</p>
+            <p class="text-sm font-bold text-foreground truncate">x64</p>
+          </div>
+        </div>
+      
+
+      
+        
+          
+            <div class="flex items-center gap-3 min-w-[120px]">
+              <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <i class="fa-solid fa-circle-info text-sm"></i>
+              </div>
+              <div class="truncate">
+                <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">
+                  title
+                </p>
+                <p class="text-sm font-bold text-foreground truncate">QA Automation Test Run</p>
+              </div>
+            </div>
+          
+        
+          
+            <div class="flex items-center gap-3 min-w-[120px]">
+              <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <i class="fa-solid fa-circle-info text-sm"></i>
+              </div>
+              <div class="truncate">
+                <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">
+                  data
+                </p>
+                <p class="text-sm font-bold text-foreground truncate">[object Object],[object Object],[object Object]</p>
+              </div>
+            </div>
+          
+        
+      
+    </div>
+  </div>
+</div>
+
+
+  <!-- Top row - Key metrics status -->
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
+      <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Features Status</h3>
+      <div id="features-chart" class="h-64"></div>
+    </div>
+    <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
+      <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Scenarios Status</h3>
+      <div id="scenarios-chart" class="h-64"></div>
+    </div>
+    <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
+      <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Steps Status</h3>
+      <div id="steps-status-chart" class="h-64"></div>
+    </div>
+  </div>
+
+  <!-- Analytics Charts -->
+  <div class="grid gap-6 lg:grid-cols-3">
+    <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
+      <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Device & OS</h3>
+      <div id="device-os-chart" class="h-64"></div>
+    </div>
+    <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
+      <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Browsers</h3>
+      <div id="browser-chart" class="h-64"></div>
+    </div>
+    <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
+      <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Top 10 Tags</h3>
+      <div id="tag-distribution-chart" class="h-64"></div>
+    </div>
+  </div>
+
+  <!-- Status Trend -->
+  <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
+    <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Features Status Trend</h3>
+    <div id="status-trend-chart" class="h-80 w-full"></div>
+  </div>
+
+  <!-- Features Overview Table -->
+  <div class="rounded-xl border bg-card text-card-foreground shadow overflow-hidden" id="features-table-container">
+  <div class="px-6 py-4 border-b flex flex-col md:flex-row md:items-center justify-between gap-4">
+    <h3 class="text-lg font-semibold whitespace-nowrap">Features Overview</h3>
+    <div class="flex flex-wrap items-center gap-3 w-full md:w-auto">
+      <div class="relative flex-1 md:w-64">
+        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-muted-foreground">
+          <i class="fa-solid fa-magnifying-glass text-xs"></i>
+        </span>
+        <input
+          type="text"
+          id="feature-search"
+          placeholder="Search features..."
+          class="w-full h-9 pl-9 pr-4 rounded-md border border-input bg-background text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-shadow shadow-sm"
+        >
+      </div>
+      <!-- Tag Filter Dropdown -->
+      <div class="relative w-full md:w-56" id="feature-tag-filter-container">
+        <button
+          type="button"
+          id="feature-tag-filter-button"
+          class="flex items-center justify-between w-full h-9 px-3 rounded-md border border-input bg-background text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-shadow shadow-sm cursor-pointer"
+        >
+          <span class="truncate text-muted-foreground text-xs" id="feature-tag-filter-label">Filter by tags...</span>
+          <i class="fa-solid fa-chevron-down text-[10px] text-muted-foreground ml-2"></i>
+        </button>
+        <div
+          id="feature-tag-filter-dropdown"
+          class="hidden absolute left-0 md:left-auto md:right-0 mt-1 w-full md:w-56 rounded-md border border-border bg-card text-card-foreground shadow-md z-50 max-h-60 overflow-y-auto p-1.5 space-y-1"
+        >
+          <!-- Dynamic tag options injected via JS -->
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-medium text-muted-foreground whitespace-nowrap">Show:</span>
+        <select
+          id="records-per-page"
+          class="h-9 px-2 rounded-md border border-input bg-background text-xs ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-shadow shadow-sm min-w-[70px]"
+        >
+          <option value="10">10</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="overflow-x-auto">
+    <table class="w-full text-sm text-left">
+      <thead class="bg-muted text-muted-foreground uppercase text-xs font-semibold">
+        <tr>
+          <th class="px-4 md:px-6 py-3 cursor-pointer hover:text-foreground transition-colors group">
+            <div class="flex items-center gap-1.5">
+              Feature Name
+              <i class="fa-solid fa-sort opacity-30 group-hover:opacity-100 text-[10px]"></i>
+            </div>
+          </th>
+          <th class="px-4 md:px-6 py-3">Environment</th>
+          <th class="px-4 md:px-6 py-3 cursor-pointer hover:text-foreground transition-colors group">
+            <div class="flex items-center gap-1.5">
+              Steps status
+              <i class="fa-solid fa-sort opacity-30 group-hover:opacity-100 text-[10px]"></i>
+            </div>
+          </th>
+          <th class="px-4 md:px-6 py-3 text-right cursor-pointer hover:text-foreground transition-colors group">
+            <div class="flex items-center justify-end gap-1.5">
+              Pass %
+              <i class="fa-solid fa-sort opacity-30 group-hover:opacity-100 text-[10px]"></i>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody id="features-table-body" class="divide-y divide-border">
+        
+        
+          <tr class="hover:bg-muted/50 transition-colors">
+            <td class="px-4 md:px-6 py-4 whitespace-nowrap md:whitespace-normal min-w-[200px]">
+              <a href="features/e11be900-3c1d-4639-93fd-709e41e5cdb4-blog-api.html" class="font-medium text-primary hover:underline">
+                Blog API
+              </a>
+              <div class="flex flex-wrap gap-1 mt-1">
+                
+                  <span class="inline-flex items-center rounded-full bg-secondary px-2 py-0.5 text-[10px] font-medium text-secondary-foreground">
+                    @api
+                  </span>
+                
+                  <span class="inline-flex items-center rounded-full bg-secondary px-2 py-0.5 text-[10px] font-medium text-secondary-foreground">
+                    @regression
+                  </span>
+                
+              </div>
+            </td>
+            <td class="px-4 md:px-6 py-4 whitespace-nowrap">
+              
+              
+              
+              
+
+              <div class="flex items-center gap-2.5 text-muted-foreground">
+                
+                <span title="GitHub Actions Runner">
+                  <i
+                    class="fa-solid fa-desktop text-base"
+                  ></i>
+                </span>
+                
+                
+                  <span title="ubuntu latest">
+                    <i
+                      class="fa-brands fa-linux text-base"
+                    ></i>
+                  </span>
+                
+                
+                
+                  <span title="chromium latest">
+                    <i
+                      class="fa-solid fa-globe text-base"
+                    ></i>
+                  </span>
+                
+                
+                
+                  <span title="Local machine">
+                    <i class="fa-solid fa-computer text-base"></i>
+                  </span>
+                
+              </div>
+            </td>
+            <td class="px-4 md:px-6 py-4 min-w-[240px]">
+              <div class="flex h-2 w-full overflow-hidden rounded-full bg-secondary">
+                
+                  <div
+                    class="h-full bg-status-passed"
+                    style="width: 100%"
+                  ></div>
+                
+                
+                
+                
+                
+                
+              </div>
+              <div class="mt-1 flex flex-wrap gap-x-2 gap-y-0.5 text-[10px] font-medium uppercase">
+                <span class="text-status-passed">4 Passed</span>
+                <span class="text-status-failed">0 Failed</span>
+                
+                
+                
+                <span class="text-status-skipped">0 Skipped</span>
+              </div>
+            </td>
+            <td class="px-6 py-4 text-right">
+              
+              
+                
+              
+              <div class="inline-flex items-center justify-end relative h-12 w-12">
+                <svg class="h-12 w-12 transform -rotate-90">
+                  <circle class="text-muted/20" stroke-width="3" stroke="currentColor" fill="transparent" r="20" cx="24" cy="24" />
+                  <circle class="text-status-passed transition-all duration-500 ease-out" stroke-width="3"
+                    stroke-dasharray="125.6"
+                    stroke-dashoffset="0"
+                    stroke-linecap="round" stroke="currentColor" fill="transparent" r="20" cx="24" cy="24" />
+                </svg>
+                <span class="absolute inset-0 flex items-center justify-center text-[10px] font-bold">100%</span
+                >
+              </div>
+            </td>
+          </tr>
+        
+          <tr class="hover:bg-muted/50 transition-colors">
+            <td class="px-4 md:px-6 py-4 whitespace-nowrap md:whitespace-normal min-w-[200px]">
+              <a href="features/8ea5261d-e56e-4029-9c18-e2ec5636c52f-product-checkout-flow.html" class="font-medium text-primary hover:underline">
+                Product Checkout Flow
+              </a>
+              <div class="flex flex-wrap gap-1 mt-1">
+                
+                  <span class="inline-flex items-center rounded-full bg-secondary px-2 py-0.5 text-[10px] font-medium text-secondary-foreground">
+                    @ui
+                  </span>
+                
+                  <span class="inline-flex items-center rounded-full bg-secondary px-2 py-0.5 text-[10px] font-medium text-secondary-foreground">
+                    @regression
+                  </span>
+                
+              </div>
+            </td>
+            <td class="px-4 md:px-6 py-4 whitespace-nowrap">
+              
+              
+              
+              
+
+              <div class="flex items-center gap-2.5 text-muted-foreground">
+                
+                <span title="GitHub Actions Runner">
+                  <i
+                    class="fa-solid fa-desktop text-base"
+                  ></i>
+                </span>
+                
+                
+                  <span title="ubuntu latest">
+                    <i
+                      class="fa-brands fa-linux text-base"
+                    ></i>
+                  </span>
+                
+                
+                
+                  <span title="chromium latest">
+                    <i
+                      class="fa-solid fa-globe text-base"
+                    ></i>
+                  </span>
+                
+                
+                
+                  <span title="Local machine">
+                    <i class="fa-solid fa-computer text-base"></i>
+                  </span>
+                
+              </div>
+            </td>
+            <td class="px-4 md:px-6 py-4 min-w-[240px]">
+              <div class="flex h-2 w-full overflow-hidden rounded-full bg-secondary">
+                
+                  <div
+                    class="h-full bg-status-passed"
+                    style="width: 100%"
+                  ></div>
+                
+                
+                
+                
+                
+                
+              </div>
+              <div class="mt-1 flex flex-wrap gap-x-2 gap-y-0.5 text-[10px] font-medium uppercase">
+                <span class="text-status-passed">1 Passed</span>
+                <span class="text-status-failed">0 Failed</span>
+                
+                
+                
+                <span class="text-status-skipped">0 Skipped</span>
+              </div>
+            </td>
+            <td class="px-6 py-4 text-right">
+              
+              
+                
+              
+              <div class="inline-flex items-center justify-end relative h-12 w-12">
+                <svg class="h-12 w-12 transform -rotate-90">
+                  <circle class="text-muted/20" stroke-width="3" stroke="currentColor" fill="transparent" r="20" cx="24" cy="24" />
+                  <circle class="text-status-passed transition-all duration-500 ease-out" stroke-width="3"
+                    stroke-dasharray="125.6"
+                    stroke-dashoffset="0"
+                    stroke-linecap="round" stroke="currentColor" fill="transparent" r="20" cx="24" cy="24" />
+                </svg>
+                <span class="absolute inset-0 flex items-center justify-center text-[10px] font-bold">100%</span
+                >
+              </div>
+            </td>
+          </tr>
+        
+          <tr class="hover:bg-muted/50 transition-colors">
+            <td class="px-4 md:px-6 py-4 whitespace-nowrap md:whitespace-normal min-w-[200px]">
+              <a href="features/6b5b8c1e-0964-41f1-bf61-1ac50e0681aa-sauce-demo-login.html" class="font-medium text-primary hover:underline">
+                Sauce Demo Login
+              </a>
+              <div class="flex flex-wrap gap-1 mt-1">
+                
+                  <span class="inline-flex items-center rounded-full bg-secondary px-2 py-0.5 text-[10px] font-medium text-secondary-foreground">
+                    @ui
+                  </span>
+                
+                  <span class="inline-flex items-center rounded-full bg-secondary px-2 py-0.5 text-[10px] font-medium text-secondary-foreground">
+                    @regression
+                  </span>
+                
+                  <span class="inline-flex items-center rounded-full bg-secondary px-2 py-0.5 text-[10px] font-medium text-secondary-foreground">
+                    @smoke
+                  </span>
+                
+              </div>
+            </td>
+            <td class="px-4 md:px-6 py-4 whitespace-nowrap">
+              
+              
+              
+              
+
+              <div class="flex items-center gap-2.5 text-muted-foreground">
+                
+                <span title="GitHub Actions Runner">
+                  <i
+                    class="fa-solid fa-desktop text-base"
+                  ></i>
+                </span>
+                
+                
+                  <span title="ubuntu latest">
+                    <i
+                      class="fa-brands fa-linux text-base"
+                    ></i>
+                  </span>
+                
+                
+                
+                  <span title="chromium latest">
+                    <i
+                      class="fa-solid fa-globe text-base"
+                    ></i>
+                  </span>
+                
+                
+                
+                  <span title="Local machine">
+                    <i class="fa-solid fa-computer text-base"></i>
+                  </span>
+                
+              </div>
+            </td>
+            <td class="px-4 md:px-6 py-4 min-w-[240px]">
+              <div class="flex h-2 w-full overflow-hidden rounded-full bg-secondary">
+                
+                  <div
+                    class="h-full bg-status-passed"
+                    style="width: 100%"
+                  ></div>
+                
+                
+                
+                
+                
+                
+              </div>
+              <div class="mt-1 flex flex-wrap gap-x-2 gap-y-0.5 text-[10px] font-medium uppercase">
+                <span class="text-status-passed">4 Passed</span>
+                <span class="text-status-failed">0 Failed</span>
+                
+                
+                
+                <span class="text-status-skipped">0 Skipped</span>
+              </div>
+            </td>
+            <td class="px-6 py-4 text-right">
+              
+              
+                
+              
+              <div class="inline-flex items-center justify-end relative h-12 w-12">
+                <svg class="h-12 w-12 transform -rotate-90">
+                  <circle class="text-muted/20" stroke-width="3" stroke="currentColor" fill="transparent" r="20" cx="24" cy="24" />
+                  <circle class="text-status-passed transition-all duration-500 ease-out" stroke-width="3"
+                    stroke-dasharray="125.6"
+                    stroke-dashoffset="0"
+                    stroke-linecap="round" stroke="currentColor" fill="transparent" r="20" cx="24" cy="24" />
+                </svg>
+                <span class="absolute inset-0 flex items-center justify-center text-[10px] font-bold">100%</span
+                >
+              </div>
+            </td>
+          </tr>
+        
+          <tr class="hover:bg-muted/50 transition-colors">
+            <td class="px-4 md:px-6 py-4 whitespace-nowrap md:whitespace-normal min-w-[200px]">
+              <a href="features/2b1b1b5e-7855-474b-bb6d-df74b347f1ca-product-checkout-flow.html" class="font-medium text-primary hover:underline">
+                Product Checkout Flow
+              </a>
+              <div class="flex flex-wrap gap-1 mt-1">
+                
+                  <span class="inline-flex items-center rounded-full bg-secondary px-2 py-0.5 text-[10px] font-medium text-secondary-foreground">
+                    @ui
+                  </span>
+                
+                  <span class="inline-flex items-center rounded-full bg-secondary px-2 py-0.5 text-[10px] font-medium text-secondary-foreground">
+                    @regression
+                  </span>
+                
+              </div>
+            </td>
+            <td class="px-4 md:px-6 py-4 whitespace-nowrap">
+              
+              
+              
+              
+
+              <div class="flex items-center gap-2.5 text-muted-foreground">
+                
+                <span title="GitHub Actions Runner">
+                  <i
+                    class="fa-solid fa-desktop text-base"
+                  ></i>
+                </span>
+                
+                
+                  <span title="ubuntu latest">
+                    <i
+                      class="fa-brands fa-linux text-base"
+                    ></i>
+                  </span>
+                
+                
+                
+                  <span title="chromium latest">
+                    <i
+                      class="fa-solid fa-globe text-base"
+                    ></i>
+                  </span>
+                
+                
+                
+                  <span title="Local machine">
+                    <i class="fa-solid fa-computer text-base"></i>
+                  </span>
+                
+              </div>
+            </td>
+            <td class="px-4 md:px-6 py-4 min-w-[240px]">
+              <div class="flex h-2 w-full overflow-hidden rounded-full bg-secondary">
+                
+                  <div
+                    class="h-full bg-status-passed"
+                    style="width: 100%"
+                  ></div>
+                
+                
+                
+                
+                
+                
+              </div>
+              <div class="mt-1 flex flex-wrap gap-x-2 gap-y-0.5 text-[10px] font-medium uppercase">
+                <span class="text-status-passed">1 Passed</span>
+                <span class="text-status-failed">0 Failed</span>
+                
+                
+                
+                <span class="text-status-skipped">0 Skipped</span>
+              </div>
+            </td>
+            <td class="px-6 py-4 text-right">
+              
+              
+                
+              
+              <div class="inline-flex items-center justify-end relative h-12 w-12">
+                <svg class="h-12 w-12 transform -rotate-90">
+                  <circle class="text-muted/20" stroke-width="3" stroke="currentColor" fill="transparent" r="20" cx="24" cy="24" />
+                  <circle class="text-status-passed transition-all duration-500 ease-out" stroke-width="3"
+                    stroke-dasharray="125.6"
+                    stroke-dashoffset="0"
+                    stroke-linecap="round" stroke="currentColor" fill="transparent" r="20" cx="24" cy="24" />
+                </svg>
+                <span class="absolute inset-0 flex items-center justify-center text-[10px] font-bold">100%</span
+                >
+              </div>
+            </td>
+          </tr>
+        
+          <tr class="hover:bg-muted/50 transition-colors">
+            <td class="px-4 md:px-6 py-4 whitespace-nowrap md:whitespace-normal min-w-[200px]">
+              <a href="features/1e5ceb66-dc34-4ef1-bad5-2e67c8981525-sauce-demo-login.html" class="font-medium text-primary hover:underline">
+                Sauce Demo Login
+              </a>
+              <div class="flex flex-wrap gap-1 mt-1">
+                
+                  <span class="inline-flex items-center rounded-full bg-secondary px-2 py-0.5 text-[10px] font-medium text-secondary-foreground">
+                    @ui
+                  </span>
+                
+                  <span class="inline-flex items-center rounded-full bg-secondary px-2 py-0.5 text-[10px] font-medium text-secondary-foreground">
+                    @regression
+                  </span>
+                
+                  <span class="inline-flex items-center rounded-full bg-secondary px-2 py-0.5 text-[10px] font-medium text-secondary-foreground">
+                    @smoke
+                  </span>
+                
+              </div>
+            </td>
+            <td class="px-4 md:px-6 py-4 whitespace-nowrap">
+              
+              
+              
+              
+
+              <div class="flex items-center gap-2.5 text-muted-foreground">
+                
+                <span title="GitHub Actions Runner">
+                  <i
+                    class="fa-solid fa-desktop text-base"
+                  ></i>
+                </span>
+                
+                
+                  <span title="ubuntu latest">
+                    <i
+                      class="fa-brands fa-linux text-base"
+                    ></i>
+                  </span>
+                
+                
+                
+                  <span title="chromium latest">
+                    <i
+                      class="fa-solid fa-globe text-base"
+                    ></i>
+                  </span>
+                
+                
+                
+                  <span title="Local machine">
+                    <i class="fa-solid fa-computer text-base"></i>
+                  </span>
+                
+              </div>
+            </td>
+            <td class="px-4 md:px-6 py-4 min-w-[240px]">
+              <div class="flex h-2 w-full overflow-hidden rounded-full bg-secondary">
+                
+                  <div
+                    class="h-full bg-status-passed"
+                    style="width: 100%"
+                  ></div>
+                
+                
+                
+                
+                
+                
+              </div>
+              <div class="mt-1 flex flex-wrap gap-x-2 gap-y-0.5 text-[10px] font-medium uppercase">
+                <span class="text-status-passed">4 Passed</span>
+                <span class="text-status-failed">0 Failed</span>
+                
+                
+                
+                <span class="text-status-skipped">0 Skipped</span>
+              </div>
+            </td>
+            <td class="px-6 py-4 text-right">
+              
+              
+                
+              
+              <div class="inline-flex items-center justify-end relative h-12 w-12">
+                <svg class="h-12 w-12 transform -rotate-90">
+                  <circle class="text-muted/20" stroke-width="3" stroke="currentColor" fill="transparent" r="20" cx="24" cy="24" />
+                  <circle class="text-status-passed transition-all duration-500 ease-out" stroke-width="3"
+                    stroke-dasharray="125.6"
+                    stroke-dashoffset="0"
+                    stroke-linecap="round" stroke="currentColor" fill="transparent" r="20" cx="24" cy="24" />
+                </svg>
+                <span class="absolute inset-0 flex items-center justify-center text-[10px] font-bold">100%</span
+                >
+              </div>
+            </td>
+          </tr>
+        
+      </tbody>
+    </table>
+  </div>
+
+  <div id="no-features-message" class="hidden py-12 text-center bg-muted/20 border-t border-border">
+    <div class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-muted mb-4">
+      <i class="fa-solid fa-magnifying-glass text-muted-foreground"></i>
+    </div>
+    <h4 class="text-sm font-semibold text-foreground">No feature found</h4>
+    <p class="text-xs text-muted-foreground mt-1">Try adjusting your filters or search terms.</p>
+  </div>
+
+  <!-- Pagination -->
+  <div class="px-6 py-4 border-t flex items-center justify-between text-xs text-muted-foreground bg-muted/20">
+    <div>
+      Showing <span id="showing-start" class="font-bold text-foreground">1</span> to
+      <span id="showing-end" class="font-bold text-foreground">10</span> of
+      <span id="total-records" class="font-bold text-foreground">5</span> entries
+    </div>
+    <div class="flex items-center gap-1" id="pagination-controls">
+      <button
+        id="prev-page"
+        disabled
+        class="h-8 w-8 flex items-center justify-center rounded border border-transparent text-foreground hover:bg-muted hover:border-border transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+      >
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <div id="page-numbers" class="flex items-center gap-1">
+        <!-- Page buttons will be injected here -->
+      </div>
+      <button
+        id="next-page"
+        
+          disabled
+        
+        class="h-8 w-8 flex items-center justify-center rounded border border-transparent text-foreground hover:bg-muted hover:border-border transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+      >
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+  // Report-wide UI config (opt-in features toggled from the reporter options)
+  window.ReportConfig = Object.assign({}, window.ReportConfig, {
+      displayChartPercentages: false,
+      modalBackdrop: true,
+      modalDraggable: false,
+      modalResizable: false,
+      modalShowContext: false
+  });
+
+  // Embedded data for charts
+  const chartData = {
+      summary: {"ambiguous":0,"failed":0,"passed":5,"notDefined":0,"pending":0,"skipped":0,"total":5,"ambiguousPercentage":"0.00","failedPercentage":"0.00","notDefinedPercentage":"0.00","pendingPercentage":"0.00","skippedPercentage":"0.00","passedPercentage":"100.00","steps":{"passed":0,"failed":0,"skipped":0,"total":0}},
+      scenarios: {"failed":0,"ambiguous":0,"notDefined":0,"pending":0,"skipped":0,"passed":14,"total":14,"ambiguousPercentage":"0.00","failedPercentage":"0.00","notDefinedPercentage":"0.00","passedPercentage":"100.00","pendingPercentage":"0.00","skippedPercentage":"0.00"},
+      features: [{"description":"  As an API consumer\n  I want to manage posts and users\n  So that I can integrate with the platform","elements":[{"description":"","id":"blog-api;get-list-of-posts","keyword":"Scenario","line":8,"name":"Get list of posts","steps":[{"result":{"status":"passed","duration":35969655},"keyword":"Before","hidden":true},{"result":{"status":"passed","duration":489455626},"arguments":[],"keyword":"When ","line":9,"name":"I send a GET request to \"/posts\"","match":{"location":"step-definitions/api/apiSteps.js:5"},"time":"00:00:00.489"},{"result":{"status":"passed","duration":1488309},"arguments":[],"keyword":"Then ","line":10,"name":"the response status should be 200","match":{"location":"step-definitions/api/apiSteps.js:23"},"time":"00:00:00.001"},{"result":{"status":"passed","duration":1071413},"arguments":[],"keyword":"And ","line":11,"name":"the response should contain a list of items","match":{"location":"step-definitions/api/apiSteps.js:27"},"time":"00:00:00.001"},{"result":{"status":"passed","duration":1479970},"arguments":[],"keyword":"And ","line":12,"name":"each item should have properties \"id\", \"title\", \"body\", \"userId\"","match":{"location":"step-definitions/api/apiSteps.js:33"},"time":"00:00:00.001"},{"result":{"status":"passed","duration":3766439},"keyword":"After","hidden":true}],"tags":[{"name":"@api","line":1},{"name":"@regression","line":1},{"name":"@smoke","line":7},{"name":"@positive","line":7}],"type":"scenario","duration":0.493495318,"time":"00:00:00.493","passed":4,"failed":0,"notDefined":0,"skipped":0,"pending":0,"ambiguous":0},{"description":"","id":"blog-api;get-list-of-users","keyword":"Scenario","line":15,"name":"Get list of users","steps":[{"result":{"status":"passed","duration":24716854},"keyword":"Before","hidden":true},{"result":{"status":"passed","duration":29870489},"arguments":[],"keyword":"When ","line":16,"name":"I send a GET request to \"/users\"","match":{"location":"step-definitions/api/apiSteps.js:5"},"time":"00:00:00.029"},{"result":{"status":"passed","duration":439902},"arguments":[],"keyword":"Then ","line":17,"name":"the response status should be 200","match":{"location":"step-definitions/api/apiSteps.js:23"},"time":"00:00:00.000"},{"result":{"status":"passed","duration":1337170},"arguments":[],"keyword":"And ","line":18,"name":"the response should contain a list of items","match":{"location":"step-definitions/api/apiSteps.js:27"},"time":"00:00:00.001"},{"result":{"status":"passed","duration":1499303},"arguments":[],"keyword":"And ","line":19,"name":"each user should have properties \"id\", \"name\", \"username\", \"email\"","match":{"location":"step-definitions/api/apiSteps.js:43"},"time":"00:00:00.001"},{"result":{"status":"passed","duration":8240455},"keyword":"After","hidden":true}],"tags":[{"name":"@api","line":1},{"name":"@regression","line":1},{"name":"@smoke","line":14},{"name":"@positive","line":14}],"type":"scenario","duration":0.033146864,"time":"00:00:00.033","passed":4,"failed":0,"notDefined":0,"skipped":0,"pending":0,"ambiguous":0},{"description":"","id":"blog-api;create-a-new-post","keyword":"Scenario","line":22,"name":"Create a new post","steps":[{"result":{"status":"passed","duration":32335739},"keyword":"Before","hidden":true},{"result":{"status":"passed","duration":514207},"arguments":[{"rows":[{"cells":["title","foo"]},{"cells":["body","bar"]},{"cells":["userId","1"]}]}],"keyword":"Given ","line":23,"name":"I have request data:","match":{"location":"step-definitions/api/apiSteps.js:10"},"time":"00:00:00.000"},{"result":{"status":"passed","duration":49349693},"arguments":[],"keyword":"When ","line":27,"name":"I send a POST request to \"/posts\" with the request data","match":{"location":"step-definitions/api/apiSteps.js:18"},"time":"00:00:00.049"},{"result":{"status":"passed","duration":253733},"arguments":[],"keyword":"Then ","line":28,"name":"the response status should be 201","match":{"location":"step-definitions/api/apiSteps.js:23"},"time":"00:00:00.000"},{"result":{"status":"passed","duration":393365},"arguments":[],"keyword":"And ","line":29,"name":"the response should contain the created item title \"foo\"","match":{"location":"step-definitions/api/apiSteps.js:53"},"time":"00:00:00.000"},{"result":{"status":"passed","duration":760886},"arguments":[],"keyword":"And ","line":30,"name":"the response should contain a generated \"id\"","match":{"location":"step-definitions/api/apiSteps.js:58"},"time":"00:00:00.000"},{"result":{"status":"passed","duration":1797103},"keyword":"After","hidden":true}],"tags":[{"name":"@api","line":1},{"name":"@regression","line":1},{"name":"@positive","line":21}],"type":"scenario","duration":0.051271884,"time":"00:00:00.051","passed":5,"failed":0,"notDefined":0,"skipped":0,"pending":0,"ambiguous":0},{"description":"","id":"blog-api;get-a-specific-user","keyword":"Scenario","line":33,"name":"Get a specific user","steps":[{"result":{"status":"passed","duration":26269840},"keyword":"Before","hidden":true},{"result":{"status":"passed","duration":26058318},"arguments":[],"keyword":"When ","line":34,"name":"I send a GET request to \"/users/1\"","match":{"location":"step-definitions/api/apiSteps.js:5"},"time":"00:00:00.026"},{"result":{"status":"passed","duration":205646},"arguments":[],"keyword":"Then ","line":35,"name":"the response status should be 200","match":{"location":"step-definitions/api/apiSteps.js:23"},"time":"00:00:00.000"},{"result":{"status":"passed","duration":407731},"arguments":[],"keyword":"And ","line":36,"name":"the response should contain user with name \"Leanne Graham\"","match":{"location":"step-definitions/api/apiSteps.js:64"},"time":"00:00:00.000"},{"result":{"status":"passed","duration":379016},"arguments":[],"keyword":"And ","line":37,"name":"the response should contain user email \"Sincere@april.biz\"","match":{"location":"step-definitions/api/apiSteps.js:69"},"time":"00:00:00.000"},{"result":{"status":"passed","duration":1544298},"keyword":"After","hidden":true}],"tags":[{"name":"@api","line":1},{"name":"@regression","line":1},{"name":"@positive","line":32}],"type":"scenario","duration":0.027050710999999998,"time":"00:00:00.027","passed":4,"failed":0,"notDefined":0,"skipped":0,"pending":0,"ambiguous":0}],"id":"e11be900-3c1d-4639-93fd-709e41e5cdb4-blog-api","line":2,"keyword":"Feature","name":"Blog API","tags":[{"name":"@api","line":1},{"name":"@regression","line":1}],"uri":"features/api/posts.feature","metadata":{"browser":{"name":"chromium","version":"latest"},"executionPlatform":"local","username":"runner","device":"GitHub Actions Runner","platform":{"name":"ubuntu","version":"latest"},"nodeVersion":"v22.23.2","reportVersion":"4.2.0","hostname":"runnervm76f27","architecture":"x64"},"scenarios":{"passed":4,"failed":0,"notDefined":0,"skipped":0,"pending":0,"ambiguous":0,"passedPercentage":"100.00","failedPercentage":"0.00","notDefinedPercentage":"0.00","skippedPercentage":"0.00","pendingPercentage":"0.00","ambiguousPercentage":"0.00","total":4},"duration":604964777,"time":"00:00:00.604","isFailed":false,"isAmbiguous":false,"isSkipped":false,"isNotdefined":false,"isPending":false,"passed":4,"failed":0,"notDefined":0,"skipped":0,"pending":0,"ambiguous":0,"totalTime":604964777,"app":"","browser":"chromium latest","device":"GitHub Actions Runner","executionPlatform":"local","os":"ubuntu latest","username":"runner"},{"description":"  As a customer\n  I want to purchase products\n  So that I can complete my order","elements":[{"description":"","id":"product-checkout-flow;complete-purchase-flow","keyword":"Scenario","line":11,"name":"Complete purchase flow","steps":[{"result":{"status":"passed","duration":44925792},"keyword":"Before","hidden":true},{"result":{"status":"passed","duration":297520344},"arguments":[],"keyword":"Given ","line":8,"name":"I am logged in as \"standard_user\"","match":{"location":"step-definitions/ui/checkoutSteps.js:8"},"time":"00:00:00.297"},{"result":{"status":"passed","duration":42058230},"arguments":[],"keyword":"Given ","line":12,"name":"I add product \"Sauce Labs Backpack\" to cart","match":{"location":"step-definitions/ui/checkoutSteps.js:14"},"time":"00:00:00.042"},{"result":{"status":"passed","duration":72554143},"arguments":[],"keyword":"When ","line":13,"name":"I go to the cart","match":{"location":"step-definitions/ui/checkoutSteps.js:19"},"time":"00:00:00.072"},{"result":{"status":"passed","duration":72179415},"arguments":[],"keyword":"And ","line":14,"name":"I proceed to checkout","match":{"location":"step-definitions/ui/checkoutSteps.js:24"},"time":"00:00:00.072"},{"result":{"status":"passed","duration":21610750},"arguments":[{"rows":[{"cells":["firstName","lastName","postalCode"]},{"cells":["John","Doe","12345"]}]}],"keyword":"And ","line":15,"name":"I fill in shipping information:","match":{"location":"step-definitions/ui/checkoutSteps.js:29"},"time":"00:00:00.021"},{"result":{"status":"passed","duration":37183978},"arguments":[],"keyword":"And ","line":18,"name":"I continue to overview","match":{"location":"step-definitions/ui/checkoutSteps.js:38"},"time":"00:00:00.037"},{"result":{"status":"passed","duration":31621971},"arguments":[],"keyword":"And ","line":19,"name":"I finish the checkout","match":{"location":"step-definitions/ui/checkoutSteps.js:42"},"time":"00:00:00.031"},{"result":{"status":"passed","duration":4463895},"arguments":[],"keyword":"Then ","line":20,"name":"I should see the order confirmation message \"Thank you for your order!\"","match":{"location":"step-definitions/ui/checkoutSteps.js:46"},"time":"00:00:00.004"},{"result":{"status":"passed","duration":5733772},"keyword":"After","hidden":true}],"tags":[{"name":"@ui","line":1},{"name":"@regression","line":1},{"name":"@e2e","line":10},{"name":"@critical","line":10}],"type":"scenario","duration":0.579192726,"time":"00:00:00.579","passed":8,"failed":0,"notDefined":0,"skipped":0,"pending":0,"ambiguous":0}],"id":"8ea5261d-e56e-4029-9c18-e2ec5636c52f-product-checkout-flow","line":2,"keyword":"Feature","name":"Product Checkout Flow","tags":[{"name":"@ui","line":1},{"name":"@regression","line":1}],"uri":"features/ui/checkout.feature","metadata":{"browser":{"name":"chromium","version":"latest"},"executionPlatform":"local","username":"runner","device":"GitHub Actions Runner","platform":{"name":"ubuntu","version":"latest"},"nodeVersion":"v22.23.2","reportVersion":"4.2.0","hostname":"runnervm76f27","architecture":"x64"},"scenarios":{"passed":1,"failed":0,"notDefined":0,"skipped":0,"pending":0,"ambiguous":0,"passedPercentage":"100.00","failedPercentage":"0.00","notDefinedPercentage":"0.00","skippedPercentage":"0.00","pendingPercentage":"0.00","ambiguousPercentage":"0.00","total":1},"duration":579192726,"time":"00:00:00.579","isFailed":false,"isAmbiguous":false,"isSkipped":false,"isNotdefined":false,"isPending":false,"passed":1,"failed":0,"notDefined":0,"skipped":0,"pending":0,"ambiguous":0,"totalTime":579192726,"app":"","browser":"chromium latest","device":"GitHub Actions Runner","executionPlatform":"local","os":"ubuntu latest","username":"runner"},{"description":"  As a customer\n  I want to log in to the application\n  So that I can access the product catalog","elements":[{"description":"","id":"sauce-demo-login;successful-login-with-valid-credentials","keyword":"Scenario","line":11,"name":"Successful login with valid credentials","steps":[{"result":{"status":"passed","duration":35731303},"keyword":"Before","hidden":true},{"result":{"status":"passed","duration":112703058},"arguments":[],"keyword":"Given ","line":8,"name":"I am on the login page","match":{"location":"step-definitions/ui/loginSteps.js:5"},"time":"00:00:00.112"},{"result":{"status":"passed","duration":39634618},"arguments":[],"keyword":"When ","line":12,"name":"I enter username \"standard_user\"","match":{"location":"step-definitions/ui/loginSteps.js:10"},"time":"00:00:00.039"},{"result":{"status":"passed","duration":6198244},"arguments":[],"keyword":"And ","line":13,"name":"I enter password \"secret_sauce\"","match":{"location":"step-definitions/ui/loginSteps.js:14"},"time":"00:00:00.006"},{"result":{"status":"passed","duration":74652775},"arguments":[],"keyword":"And ","line":14,"name":"I click the login button","match":{"location":"step-definitions/ui/loginSteps.js:18"},"time":"00:00:00.074"},{"result":{"status":"passed","duration":6710511},"arguments":[],"keyword":"Then ","line":15,"name":"I should see the products page","match":{"location":"step-definitions/ui/loginSteps.js:22"},"time":"00:00:00.006"},{"result":{"status":"passed","duration":3342283},"arguments":[],"keyword":"And ","line":16,"name":"the page title should be \"Swag Labs\"","match":{"location":"step-definitions/ui/loginSteps.js:26"},"time":"00:00:00.003"},{"result":{"status":"passed","duration":2657699},"keyword":"After","hidden":true}],"tags":[{"name":"@ui","line":1},{"name":"@regression","line":1},{"name":"@smoke","line":1},{"name":"@positive","line":10}],"type":"scenario","duration":0.243241489,"time":"00:00:00.243","passed":6,"failed":0,"notDefined":0,"skipped":0,"pending":0,"ambiguous":0},{"description":"","id":"sauce-demo-login;failed-login-with-invalid-credentials","keyword":"Scenario Outline","line":27,"name":"Failed login with invalid credentials","steps":[{"result":{"status":"passed","duration":36759008},"keyword":"Before","hidden":true},{"result":{"status":"passed","duration":118176674},"arguments":[],"keyword":"Given ","line":8,"name":"I am on the login page","match":{"location":"step-definitions/ui/loginSteps.js:5"},"time":"00:00:00.118"},{"result":{"status":"passed","duration":39473939},"arguments":[],"keyword":"When ","line":20,"name":"I enter username \"invalid_user\"","match":{"location":"step-definitions/ui/loginSteps.js:10"},"time":"00:00:00.039"},{"result":{"status":"passed","duration":6138365},"arguments":[],"keyword":"And ","line":21,"name":"I enter password \"secret_sauce\"","match":{"location":"step-definitions/ui/loginSteps.js:14"},"time":"00:00:00.006"},{"result":{"status":"passed","duration":77685799},"arguments":[],"keyword":"And ","line":22,"name":"I click the login button","match":{"location":"step-definitions/ui/loginSteps.js:18"},"time":"00:00:00.077"},{"result":{"status":"passed","duration":3002301},"arguments":[],"keyword":"Then ","line":23,"name":"I should see an error message \"Epic sadface: Username and password do not match any user in this service\"","match":{"location":"step-definitions/ui/loginSteps.js:30"},"time":"00:00:00.003"},{"result":{"status":"passed","duration":2192121},"keyword":"After","hidden":true}],"tags":[{"name":"@ui","line":1},{"name":"@regression","line":1},{"name":"@smoke","line":1},{"name":"@negative","line":18}],"type":"scenario","duration":0.24447707800000001,"time":"00:00:00.244","passed":5,"failed":0,"notDefined":0,"skipped":0,"pending":0,"ambiguous":0},{"description":"","id":"sauce-demo-login;failed-login-with-invalid-credentials","keyword":"Scenario Outline","line":28,"name":"Failed login with invalid credentials","steps":[{"result":{"status":"passed","duration":35323370},"keyword":"Before","hidden":true},{"result":{"status":"passed","duration":117665812},"arguments":[],"keyword":"Given ","line":8,"name":"I am on the login page","match":{"location":"step-definitions/ui/loginSteps.js:5"},"time":"00:00:00.117"},{"result":{"status":"passed","duration":41512407},"arguments":[],"keyword":"When ","line":20,"name":"I enter username \"standard_user\"","match":{"location":"step-definitions/ui/loginSteps.js:10"},"time":"00:00:00.041"},{"result":{"status":"passed","duration":6075972},"arguments":[],"keyword":"And ","line":21,"name":"I enter password \"wrong_pass\"","match":{"location":"step-definitions/ui/loginSteps.js:14"},"time":"00:00:00.006"},{"result":{"status":"passed","duration":75508544},"arguments":[],"keyword":"And ","line":22,"name":"I click the login button","match":{"location":"step-definitions/ui/loginSteps.js:18"},"time":"00:00:00.075"},{"result":{"status":"passed","duration":2683197},"arguments":[],"keyword":"Then ","line":23,"name":"I should see an error message \"Epic sadface: Username and password do not match any user in this service\"","match":{"location":"step-definitions/ui/loginSteps.js:30"},"time":"00:00:00.002"},{"result":{"status":"passed","duration":1841352},"keyword":"After","hidden":true}],"tags":[{"name":"@ui","line":1},{"name":"@regression","line":1},{"name":"@smoke","line":1},{"name":"@negative","line":18}],"type":"scenario","duration":0.243445932,"time":"00:00:00.243","passed":5,"failed":0,"notDefined":0,"skipped":0,"pending":0,"ambiguous":0},{"description":"","id":"sauce-demo-login;failed-login-with-invalid-credentials","keyword":"Scenario Outline","line":29,"name":"Failed login with invalid credentials","steps":[{"result":{"status":"passed","duration":32462078},"keyword":"Before","hidden":true},{"result":{"status":"passed","duration":122410645},"arguments":[],"keyword":"Given ","line":8,"name":"I am on the login page","match":{"location":"step-definitions/ui/loginSteps.js:5"},"time":"00:00:00.122"},{"result":{"status":"passed","duration":38909763},"arguments":[],"keyword":"When ","line":20,"name":"I enter username \"\"","match":{"location":"step-definitions/ui/loginSteps.js:10"},"time":"00:00:00.038"},{"result":{"status":"passed","duration":8684965},"arguments":[],"keyword":"And ","line":21,"name":"I enter password \"secret_sauce\"","match":{"location":"step-definitions/ui/loginSteps.js:14"},"time":"00:00:00.008"},{"result":{"status":"passed","duration":71544319},"arguments":[],"keyword":"And ","line":22,"name":"I click the login button","match":{"location":"step-definitions/ui/loginSteps.js:18"},"time":"00:00:00.071"},{"result":{"status":"passed","duration":2365252},"arguments":[],"keyword":"Then ","line":23,"name":"I should see an error message \"Epic sadface: Username is required\"","match":{"location":"step-definitions/ui/loginSteps.js:30"},"time":"00:00:00.002"},{"result":{"status":"passed","duration":1985001},"keyword":"After","hidden":true}],"tags":[{"name":"@ui","line":1},{"name":"@regression","line":1},{"name":"@smoke","line":1},{"name":"@negative","line":18}],"type":"scenario","duration":0.243914944,"time":"00:00:00.243","passed":5,"failed":0,"notDefined":0,"skipped":0,"pending":0,"ambiguous":0}],"id":"6b5b8c1e-0964-41f1-bf61-1ac50e0681aa-sauce-demo-login","line":2,"keyword":"Feature","name":"Sauce Demo Login","tags":[{"name":"@ui","line":1},{"name":"@regression","line":1},{"name":"@smoke","line":1}],"uri":"features/ui/login.feature","metadata":{"browser":{"name":"chromium","version":"latest"},"executionPlatform":"local","username":"runner","device":"GitHub Actions Runner","platform":{"name":"ubuntu","version":"latest"},"nodeVersion":"v22.23.2","reportVersion":"4.2.0","hostname":"runnervm76f27","architecture":"x64"},"scenarios":{"passed":4,"failed":0,"notDefined":0,"skipped":0,"pending":0,"ambiguous":0,"passedPercentage":"100.00","failedPercentage":"0.00","notDefinedPercentage":"0.00","skippedPercentage":"0.00","pendingPercentage":"0.00","ambiguousPercentage":"0.00","total":4},"duration":975079443,"time":"00:00:00.975","isFailed":false,"isAmbiguous":false,"isSkipped":false,"isNotdefined":false,"isPending":false,"passed":4,"failed":0,"notDefined":0,"skipped":0,"pending":0,"ambiguous":0,"totalTime":975079443,"app":"","browser":"chromium latest","device":"GitHub Actions Runner","executionPlatform":"local","os":"ubuntu latest","username":"runner"},{"description":"  As a customer\n  I want to purchase products\n  So that I can complete my order","elements":[{"description":"","id":"product-checkout-flow;complete-purchase-flow","keyword":"Scenario","line":11,"name":"Complete purchase flow","steps":[{"result":{"status":"passed","duration":44925792},"keyword":"Before","hidden":true},{"result":{"status":"passed","duration":297520344},"arguments":[],"keyword":"Given ","line":8,"name":"I am logged in as \"standard_user\"","match":{"location":"step-definitions/ui/checkoutSteps.js:8"},"time":"00:00:00.297"},{"result":{"status":"passed","duration":42058230},"arguments":[],"keyword":"Given ","line":12,"name":"I add product \"Sauce Labs Backpack\" to cart","match":{"location":"step-definitions/ui/checkoutSteps.js:14"},"time":"00:00:00.042"},{"result":{"status":"passed","duration":72554143},"arguments":[],"keyword":"When ","line":13,"name":"I go to the cart","match":{"location":"step-definitions/ui/checkoutSteps.js:19"},"time":"00:00:00.072"},{"result":{"status":"passed","duration":72179415},"arguments":[],"keyword":"And ","line":14,"name":"I proceed to checkout","match":{"location":"step-definitions/ui/checkoutSteps.js:24"},"time":"00:00:00.072"},{"result":{"status":"passed","duration":21610750},"arguments":[{"rows":[{"cells":["firstName","lastName","postalCode"]},{"cells":["John","Doe","12345"]}]}],"keyword":"And ","line":15,"name":"I fill in shipping information:","match":{"location":"step-definitions/ui/checkoutSteps.js:29"},"time":"00:00:00.021"},{"result":{"status":"passed","duration":37183978},"arguments":[],"keyword":"And ","line":18,"name":"I continue to overview","match":{"location":"step-definitions/ui/checkoutSteps.js:38"},"time":"00:00:00.037"},{"result":{"status":"passed","duration":31621971},"arguments":[],"keyword":"And ","line":19,"name":"I finish the checkout","match":{"location":"step-definitions/ui/checkoutSteps.js:42"},"time":"00:00:00.031"},{"result":{"status":"passed","duration":4463895},"arguments":[],"keyword":"Then ","line":20,"name":"I should see the order confirmation message \"Thank you for your order!\"","match":{"location":"step-definitions/ui/checkoutSteps.js:46"},"time":"00:00:00.004"},{"result":{"status":"passed","duration":5733772},"keyword":"After","hidden":true}],"tags":[{"name":"@ui","line":1},{"name":"@regression","line":1},{"name":"@e2e","line":10},{"name":"@critical","line":10}],"type":"scenario","duration":0.579192726,"time":"00:00:00.579","passed":8,"failed":0,"notDefined":0,"skipped":0,"pending":0,"ambiguous":0}],"id":"2b1b1b5e-7855-474b-bb6d-df74b347f1ca-product-checkout-flow","line":2,"keyword":"Feature","name":"Product Checkout Flow","tags":[{"name":"@ui","line":1},{"name":"@regression","line":1}],"uri":"features/ui/checkout.feature","metadata":{"browser":{"name":"chromium","version":"latest"},"executionPlatform":"local","username":"runner","device":"GitHub Actions Runner","platform":{"name":"ubuntu","version":"latest"},"nodeVersion":"v22.23.2","reportVersion":"4.2.0","hostname":"runnervm76f27","architecture":"x64"},"scenarios":{"passed":1,"failed":0,"notDefined":0,"skipped":0,"pending":0,"ambiguous":0,"passedPercentage":"100.00","failedPercentage":"0.00","notDefinedPercentage":"0.00","skippedPercentage":"0.00","pendingPercentage":"0.00","ambiguousPercentage":"0.00","total":1},"duration":579192726,"time":"00:00:00.579","isFailed":false,"isAmbiguous":false,"isSkipped":false,"isNotdefined":false,"isPending":false,"passed":1,"failed":0,"notDefined":0,"skipped":0,"pending":0,"ambiguous":0,"totalTime":579192726,"app":"","browser":"chromium latest","device":"GitHub Actions Runner","executionPlatform":"local","os":"ubuntu latest","username":"runner"},{"description":"  As a customer\n  I want to log in to the application\n  So that I can access the product catalog","elements":[{"description":"","id":"sauce-demo-login;successful-login-with-valid-credentials","keyword":"Scenario","line":11,"name":"Successful login with valid credentials","steps":[{"result":{"status":"passed","duration":35731303},"keyword":"Before","hidden":true},{"result":{"status":"passed","duration":112703058},"arguments":[],"keyword":"Given ","line":8,"name":"I am on the login page","match":{"location":"step-definitions/ui/loginSteps.js:5"},"time":"00:00:00.112"},{"result":{"status":"passed","duration":39634618},"arguments":[],"keyword":"When ","line":12,"name":"I enter username \"standard_user\"","match":{"location":"step-definitions/ui/loginSteps.js:10"},"time":"00:00:00.039"},{"result":{"status":"passed","duration":6198244},"arguments":[],"keyword":"And ","line":13,"name":"I enter password \"secret_sauce\"","match":{"location":"step-definitions/ui/loginSteps.js:14"},"time":"00:00:00.006"},{"result":{"status":"passed","duration":74652775},"arguments":[],"keyword":"And ","line":14,"name":"I click the login button","match":{"location":"step-definitions/ui/loginSteps.js:18"},"time":"00:00:00.074"},{"result":{"status":"passed","duration":6710511},"arguments":[],"keyword":"Then ","line":15,"name":"I should see the products page","match":{"location":"step-definitions/ui/loginSteps.js:22"},"time":"00:00:00.006"},{"result":{"status":"passed","duration":3342283},"arguments":[],"keyword":"And ","line":16,"name":"the page title should be \"Swag Labs\"","match":{"location":"step-definitions/ui/loginSteps.js:26"},"time":"00:00:00.003"},{"result":{"status":"passed","duration":2657699},"keyword":"After","hidden":true}],"tags":[{"name":"@ui","line":1},{"name":"@regression","line":1},{"name":"@smoke","line":1},{"name":"@positive","line":10}],"type":"scenario","duration":0.243241489,"time":"00:00:00.243","passed":6,"failed":0,"notDefined":0,"skipped":0,"pending":0,"ambiguous":0},{"description":"","id":"sauce-demo-login;failed-login-with-invalid-credentials","keyword":"Scenario Outline","line":27,"name":"Failed login with invalid credentials","steps":[{"result":{"status":"passed","duration":36759008},"keyword":"Before","hidden":true},{"result":{"status":"passed","duration":118176674},"arguments":[],"keyword":"Given ","line":8,"name":"I am on the login page","match":{"location":"step-definitions/ui/loginSteps.js:5"},"time":"00:00:00.118"},{"result":{"status":"passed","duration":39473939},"arguments":[],"keyword":"When ","line":20,"name":"I enter username \"invalid_user\"","match":{"location":"step-definitions/ui/loginSteps.js:10"},"time":"00:00:00.039"},{"result":{"status":"passed","duration":6138365},"arguments":[],"keyword":"And ","line":21,"name":"I enter password \"secret_sauce\"","match":{"location":"step-definitions/ui/loginSteps.js:14"},"time":"00:00:00.006"},{"result":{"status":"passed","duration":77685799},"arguments":[],"keyword":"And ","line":22,"name":"I click the login button","match":{"location":"step-definitions/ui/loginSteps.js:18"},"time":"00:00:00.077"},{"result":{"status":"passed","duration":3002301},"arguments":[],"keyword":"Then ","line":23,"name":"I should see an error message \"Epic sadface: Username and password do not match any user in this service\"","match":{"location":"step-definitions/ui/loginSteps.js:30"},"time":"00:00:00.003"},{"result":{"status":"passed","duration":2192121},"keyword":"After","hidden":true}],"tags":[{"name":"@ui","line":1},{"name":"@regression","line":1},{"name":"@smoke","line":1},{"name":"@negative","line":18}],"type":"scenario","duration":0.24447707800000001,"time":"00:00:00.244","passed":5,"failed":0,"notDefined":0,"skipped":0,"pending":0,"ambiguous":0},{"description":"","id":"sauce-demo-login;failed-login-with-invalid-credentials","keyword":"Scenario Outline","line":28,"name":"Failed login with invalid credentials","steps":[{"result":{"status":"passed","duration":35323370},"keyword":"Before","hidden":true},{"result":{"status":"passed","duration":117665812},"arguments":[],"keyword":"Given ","line":8,"name":"I am on the login page","match":{"location":"step-definitions/ui/loginSteps.js:5"},"time":"00:00:00.117"},{"result":{"status":"passed","duration":41512407},"arguments":[],"keyword":"When ","line":20,"name":"I enter username \"standard_user\"","match":{"location":"step-definitions/ui/loginSteps.js:10"},"time":"00:00:00.041"},{"result":{"status":"passed","duration":6075972},"arguments":[],"keyword":"And ","line":21,"name":"I enter password \"wrong_pass\"","match":{"location":"step-definitions/ui/loginSteps.js:14"},"time":"00:00:00.006"},{"result":{"status":"passed","duration":75508544},"arguments":[],"keyword":"And ","line":22,"name":"I click the login button","match":{"location":"step-definitions/ui/loginSteps.js:18"},"time":"00:00:00.075"},{"result":{"status":"passed","duration":2683197},"arguments":[],"keyword":"Then ","line":23,"name":"I should see an error message \"Epic sadface: Username and password do not match any user in this service\"","match":{"location":"step-definitions/ui/loginSteps.js:30"},"time":"00:00:00.002"},{"result":{"status":"passed","duration":1841352},"keyword":"After","hidden":true}],"tags":[{"name":"@ui","line":1},{"name":"@regression","line":1},{"name":"@smoke","line":1},{"name":"@negative","line":18}],"type":"scenario","duration":0.243445932,"time":"00:00:00.243","passed":5,"failed":0,"notDefined":0,"skipped":0,"pending":0,"ambiguous":0},{"description":"","id":"sauce-demo-login;failed-login-with-invalid-credentials","keyword":"Scenario Outline","line":29,"name":"Failed login with invalid credentials","steps":[{"result":{"status":"passed","duration":32462078},"keyword":"Before","hidden":true},{"result":{"status":"passed","duration":122410645},"arguments":[],"keyword":"Given ","line":8,"name":"I am on the login page","match":{"location":"step-definitions/ui/loginSteps.js:5"},"time":"00:00:00.122"},{"result":{"status":"passed","duration":38909763},"arguments":[],"keyword":"When ","line":20,"name":"I enter username \"\"","match":{"location":"step-definitions/ui/loginSteps.js:10"},"time":"00:00:00.038"},{"result":{"status":"passed","duration":8684965},"arguments":[],"keyword":"And ","line":21,"name":"I enter password \"secret_sauce\"","match":{"location":"step-definitions/ui/loginSteps.js:14"},"time":"00:00:00.008"},{"result":{"status":"passed","duration":71544319},"arguments":[],"keyword":"And ","line":22,"name":"I click the login button","match":{"location":"step-definitions/ui/loginSteps.js:18"},"time":"00:00:00.071"},{"result":{"status":"passed","duration":2365252},"arguments":[],"keyword":"Then ","line":23,"name":"I should see an error message \"Epic sadface: Username is required\"","match":{"location":"step-definitions/ui/loginSteps.js:30"},"time":"00:00:00.002"},{"result":{"status":"passed","duration":1985001},"keyword":"After","hidden":true}],"tags":[{"name":"@ui","line":1},{"name":"@regression","line":1},{"name":"@smoke","line":1},{"name":"@negative","line":18}],"type":"scenario","duration":0.243914944,"time":"00:00:00.243","passed":5,"failed":0,"notDefined":0,"skipped":0,"pending":0,"ambiguous":0}],"id":"1e5ceb66-dc34-4ef1-bad5-2e67c8981525-sauce-demo-login","line":2,"keyword":"Feature","name":"Sauce Demo Login","tags":[{"name":"@ui","line":1},{"name":"@regression","line":1},{"name":"@smoke","line":1}],"uri":"features/ui/login.feature","metadata":{"browser":{"name":"chromium","version":"latest"},"executionPlatform":"local","username":"runner","device":"GitHub Actions Runner","platform":{"name":"ubuntu","version":"latest"},"nodeVersion":"v22.23.2","reportVersion":"4.2.0","hostname":"runnervm76f27","architecture":"x64"},"scenarios":{"passed":4,"failed":0,"notDefined":0,"skipped":0,"pending":0,"ambiguous":0,"passedPercentage":"100.00","failedPercentage":"0.00","notDefinedPercentage":"0.00","skippedPercentage":"0.00","pendingPercentage":"0.00","ambiguousPercentage":"0.00","total":4},"duration":975079443,"time":"00:00:00.975","isFailed":false,"isAmbiguous":false,"isSkipped":false,"isNotdefined":false,"isPending":false,"passed":4,"failed":0,"notDefined":0,"skipped":0,"pending":0,"ambiguous":0,"totalTime":975079443,"app":"","browser":"chromium latest","device":"GitHub Actions Runner","executionPlatform":"local","os":"ubuntu latest","username":"runner"}]
+  };
+</script>
+
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="border-t bg-background px-6 py-4 mt-8">
+  <div class="mx-auto max-w-7xl text-center">
+    
+      <p class="text-xs text-muted-foreground">
+        Generated by
+        <a
+          href="https://github.com/WasiqB/multiple-cucumber-html-reporter"
+          target="_blank"
+          class="text-primary hover:underline"
+          >Multiple Cucumber HTML Reporter</a
+        >
+      </p>
+      <p class="text-xs text-muted-foreground mt-2">
+        Built with ❤️ by
+        <a href="https://wasiqbhamla.com/" target="_blank" class="text-primary hover:underline font-semibold"
+          >Wasiq Bhamla</a
+        >
+        <span class="mx-1.5 text-muted-foreground/50">•</span>
+        <a
+          href="https://github.com/WasiqB"
+          target="_blank"
+          class="text-muted-foreground hover:text-primary transition-colors"
+          ><i class="fa-brands fa-github mr-0.5"></i
+        ></a>
+        <span class="mx-1.5 text-muted-foreground/50">•</span>
+        <a
+          href="https://x.com/WasiqBhamla"
+          target="_blank"
+          class="text-muted-foreground hover:text-primary transition-colors"
+          ><i class="fa-brands fa-x-twitter mr-0.5"></i
+        ></a>
+        <span class="mx-1.5 text-muted-foreground/50">•</span>
+        <a
+          href="https://www.linkedin.com/in/wasiqbhamla/"
+          target="_blank"
+          class="text-muted-foreground hover:text-primary transition-colors"
+          ><i class="fa-brands fa-linkedin mr-0.5"></i
+        ></a>
+      </p>
+    
+  </div>
+</footer>
+
+    </div>
+
+    <!-- Media Modal -->
+    
+
+
+
+
+  <div
+    id="media-modal"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4"
+    onclick="closeModal()"
+  >
+    <div
+      class="relative w-full max-w-4xl max-h-[90vh] bg-background rounded-lg shadow-lg flex flex-col overflow-hidden"
+      onclick="event.stopPropagation()"
+    >
+      <!-- Header -->
+      <div class="flex items-center justify-between border-b p-4 text-card-foreground">
+        <h2 id="modal-title" class="text-lg font-semibold truncate mr-4">Attachment</h2>
+        <button onclick="closeModal()" class="rounded-lg p-1 hover:bg-muted transition-colors">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Content -->
+      <div id="modal-content" class="overflow-auto flex-1 p-4 bg-muted/10">
+        <!-- Content will be injected here -->
+      </div>
+    </div>
+  </div>
+
+
+
+    <script src="./scripts/utils.js"></script>
+<script src="./scripts/theme.js"></script>
+<script src="./scripts/modal.js"></script>
+<script src="./scripts/charts.js"></script>
+<script src="./scripts/table.js"></script>
+<script src="./scripts/scenarios.js"></script>
+<script src="./scripts/main.js"></script>
+
+  </body>
+</html>
